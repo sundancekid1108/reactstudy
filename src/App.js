@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+//import logo from './logo.svg';
 import './App.css';
 import Movie from './Movie';
 
@@ -13,13 +13,10 @@ import Movie from './Movie';
    */
 
 class App extends Component {
-  state = {
-  }
+  state = {}
 
   componentDidMount() {
     this._getMovies();
-    
-    
   }
 
   
@@ -31,9 +28,15 @@ class App extends Component {
    */
   
   _renderMovies = () => {
-    const movies = this.state.movies.map((movie, index) => {
-       return <Movie title={movie.title} poster={movie.poster} key={index}/>
-    })
+    const movies = this.state.movies.map((movie) => {
+      return <Movie
+        title={movie.title_english}
+        poster={movie.medium_cover_image}
+        key={movie.id}
+        genres={movie.genres}
+        synopsis = {movie.synopsis}
+       /> //prop추가 
+    }) //컴포넌트의 key에 index 사용은 별로다 (느림)
     return movies
   }
 
